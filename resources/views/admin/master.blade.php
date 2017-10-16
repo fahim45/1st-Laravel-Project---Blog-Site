@@ -60,6 +60,10 @@
 <!-- jQuery -->
 <script src="{{asset('/admin/')}}/vendor/jquery/jquery.min.js"></script>
 
+<!-- for TinyMCE-->
+<script src="{{asset('/admin/')}}/tinymce/tinymce.min.js"></script>
+<script src="{{asset('/admin/')}}/tinymce/init-tinymce.js"></script>
+
 <!-- Bootstrap Core JavaScript -->
 <script src="{{asset('/admin/')}}/vendor/bootstrap/js/bootstrap.min.js"></script>
 

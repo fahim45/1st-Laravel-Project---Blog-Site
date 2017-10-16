@@ -37,10 +37,10 @@
                 <a href="#"><i class="fa fa-wrench fa-fw"></i> Blog Info<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="{{url('')}}">Add Blog</a>
+                        <a href="{{url('/blog/add-blog')}}">Add Blog</a>
                     </li>
                     <li>
-                        <a href="{{url('')}}">Manage Blog</a>
+                        <a href="{{url('/blog/manage-blog')}}">Manage Blog</a>
                     </li>
                     {{--<li>
                         <a href="notifications.html">Notifications</a>
