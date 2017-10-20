@@ -14,7 +14,26 @@ class BlogController extends Controller
         return view('admin.blog.add-blog',['categories'=>$categories]);
     }
     public function saveBlogInfo(Request $request){
-        Blog::create($request->all());
+        $this->validate($request, [
+            'blog_title'=>'required|min:10|max:255',
+        ]);
+
+        $blogImage = $request->file('blog_image');
+        $imageName = $blogImage->getClientOriginalName();
+        $directory = 'blog-image/';
+        $blogImage->move($directory, $imageName);
+        $imageUrl = $directory.$imageName;
+
+        //Blog::create($request->all());
+        $blog = new Blog();
+        $blog->blog_title = $request->blog_title;
+        $blog->author_name = $request->author_name;
+        $blog->category_id = $request->category_id;
+        $blog->blog_description = $request->blog_description;
+        $blog->blog_image = $imageUrl;
+        $blog->publication_status = $request->publication_status;
+        $blog->save();
+
         return redirect('/blog/add-blog')->with('message', 'Blog Info Added Successfully');
     }
     public function manageBlogInfo(){
@@ -51,8 +70,7 @@ class BlogController extends Controller
         return view('admin.blog.edit-blog', ['blog'=>$blogById, 'categories'=>$categories]);
     }
     public function updateBlogInfo(Request $request){
-        $blogById = Blog::find($request->blog_id); /*>>>>>>My Problem Line, Can't Understand*/
-
+        $blogById = Blog::find($request->blog_id);
         $blogById->blog_title = $request->blog_title;
         $blogById->author_name = $request->author_name;
         $blogById->category_id = $request->category_id;

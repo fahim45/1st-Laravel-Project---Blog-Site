@@ -26,7 +26,7 @@
                     <?php $i = 1; ?>
                     @foreach($categories as $category)
                         <tr>
-                            <td>{{ $i++ }}</td> {{--For Category ID--}}
+                            <td>{{ $i++ }}</td> {{--For Category Serial no--}}
                             <td>{{ $category->category_name }}</td>
                             <td>{{ $category->category_description }}</td>
                             <td>{{ $category->publication_status==1? 'Published':'Unpublished' }}</td>

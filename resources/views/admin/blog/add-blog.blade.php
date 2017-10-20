@@ -17,12 +17,13 @@
                 @if($message = Session::get('message'))
                     <h2 class="text-center text-success">{{$message}}</h2>
                 @endif
-                <form class="form-horizontal" action="{{url('/blog/new-blog')}}" method="post">
+                <form class="form-horizontal" action="{{url('/blog/new-blog')}}" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="form-group">
                         <label for="" class="col-sm-3">Blog Title</label>
                         <div class="col-sm-9">
                             <input type="text" name="blog_title" class="form-control"/>
+                            <span class="text-danger">{{ $errors->has('blog_title')? $errors->first('blog_title') : '' }}</span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -46,6 +47,12 @@
                         <label for="" class="col-sm-3">Blog Description</label>
                         <div class="col-sm-9">
                             <textarea name="blog_description" class="tinymce" id="" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-3">Blog Image</label>
+                        <div class="col-sm-9">
+                            <input type="file" name="blog_image" accept="image/*"/>
                         </div>
                     </div>
                     <div class="form-group">
